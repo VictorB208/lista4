@@ -1,0 +1,34 @@
+#!/bin/bash
+
+echo "r - Digite o nome de um arquivo que será processado"
+echo "a - Remover as letras do arquivo"
+echo "b - Remover todos os dígitos do arquivo"
+echo "c - Substuir todos os caracteres que não são letras nem dígitos por $"
+echo "q - Sair do script"
+
+while true
+do
+        read -p  "Escolha uma letra: " x
+        case $x in
+        'r')
+
+        read -p "O arquivo processado será: " a ;;
+        'a')
+        cat $a | sed 's/[a-zA-Z]//g'
+
+        read -p "Letras removidas" ;;
+        'b')
+
+        cat $a | sed 's/[0-9]//g'
+        read -p "Digitos removidos" ;;
+        'c')
+
+        cat $a | sed 's/[^a-zA-Z0-9]/\$/g'
+        read -p "Caracteres substituídos" ;;
+        'q')
+        echo "Desligando."
+        sleep 4
+        exit 0;;
+
+        esac 
+done
